@@ -1,5 +1,5 @@
-import { Line } from 'vue-chartjs'
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Line } from "vue-chartjs";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 Chart.plugins.unregister(ChartDataLabels);
 
 export default {
@@ -7,36 +7,36 @@ export default {
   props: {
     chartData: {
       type: Object,
-      required: true
+      required: true,
     },
-    options:{
+    options: {
       type: Object,
-      required: true
+      required: true,
     },
     height: {
-      default: 120,
-      type: Number
-    }
+      default: 300,
+      type: Number,
+    },
   },
   methods: {
-    renderStackedChart () {
-      this.renderChart(this.chartData, this.options)
-    }
+    renderStackedChart() {
+      this.renderChart(this.chartData, this.options);
+    },
   },
-  mounted () {
-    this.renderChart(this.chartData, this.options)
+  mounted() {
+    this.renderChart(this.chartData, this.options);
   },
   watch: {
-    chartData () {
-      if(this.options.plugins !== undefined){
-        if(this.options.plugins.datalabels !== undefined){
-          if(this.options.plugins.datalabels !== false){
+    chartData() {
+      if (this.options.plugins !== undefined) {
+        if (this.options.plugins.datalabels !== undefined) {
+          if (this.options.plugins.datalabels !== false) {
             this.addPlugin(ChartDataLabels);
           }
         }
       }
-      this.$data._chart.destroy()
-      this.renderStackedChart()
-    }
-  }
-}
+      this.$data._chart.destroy();
+      this.renderStackedChart();
+    },
+  },
+};

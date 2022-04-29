@@ -50,6 +50,11 @@ class StackedChart extends Card
         return $this->withMeta(['animations' => $animations]);
     }
 
+    public function height(string $height): self
+    {
+        return $this->withMeta(['height' => $height]);
+    }
+
     public function title(string $title): self
     {
         return $this->withMeta(['title' => $title, 'uriKey' => Str::slug($title)]);
